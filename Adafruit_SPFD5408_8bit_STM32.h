@@ -32,13 +32,18 @@
 // Define pins and Output Data Registers
 /*****************************************************************************/
 
+// *******Data pins section*******
+
 #define TFT_DATA GPIOB
 // Port data bits D0..D7:
 // enable only one from below lines corresponding to your HW setup:
 //#define TFT_DATA_NIBBLE 0 // take the lower 8 bits: 0..7
 #define TFT_DATA_NIBBLE 8 // take the higher 8 bits: 8..15
 
-//Control pins |RD |WR |RS |CS |RST|
+// *******Data pins section - end*******
+
+// *******Control pins section*******
+
 #define TFT_CNTRL      GPIOA
 #define TFT_RD         PA0
 #define TFT_WR         PA1
@@ -59,6 +64,9 @@
 #define CD_DATA      { TFT_CNTRL->regs->BSRR = TFT_RS_MASK; }
 #define CS_ACTIVE    { TFT_CNTRL->regs->BRR  = TFT_CS_MASK; }
 #define CS_IDLE      { TFT_CNTRL->regs->BSRR = TFT_CS_MASK; }
+
+// *******Control pins section - end*******
+
 
 #define WR_STROBE { WR_ACTIVE; WR_IDLE; }
 
